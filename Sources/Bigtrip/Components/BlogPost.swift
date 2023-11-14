@@ -9,7 +9,7 @@ import Foundation
 import Plot
 import Publish
 
-struct BlogPost: Component {
+struct BlogPost: DatedComponent {
     let title: String
     let slug: String
     let date: Date
@@ -33,4 +33,22 @@ struct BlogPost: Component {
             Div(content.body)
         }
     }
+    
+    var previewBox: Component {
+        Article {
+            H1 { Link(title, url: "/posts/\(slug)") }
+            Paragraph(description)
+        }
+    }
 }
+
+extension BlogPost: Comparable {
+    static func == (lhs: BlogPost, rhs: BlogPost) -> Bool {
+        lhs.date == rhs.date
+    }
+    
+    static func < (lhs: BlogPost, rhs: BlogPost) -> Bool {
+        lhs.date < rhs.date
+    }
+}
+

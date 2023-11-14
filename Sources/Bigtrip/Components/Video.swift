@@ -9,21 +9,20 @@ import Foundation
 import Plot
 import Publish
 
-struct Video: Component, Decodable {
+struct Video: DatedComponent, Decodable {
     let id: Int
     let name: String
-    let dateRecorded: Date?
+    let dateRecorded: Date
     let caption: String
     let url: String
     let embed: String
     let tn: String
     let duration: TimeInterval
     
+    var date: Date { dateRecorded }
+    
     var formattedDate: String {
-        if let dateRecorded {
-            return EnvironmentKey.defaultDateFormatter.string(from: dateRecorded)
-        }
-        return ""
+        EnvironmentKey.defaultDateFormatter.string(from: dateRecorded)
     }
     
     var formattedDuration: String {
@@ -51,10 +50,7 @@ struct Video: Component, Decodable {
     var link: String { "/video/\(autoSlug)" }
     
     var dateRecordedString: String {
-        if dateRecorded == nil {
-            return ""
-        }
-        return "Recorded:  " + EnvironmentKey.defaultDateFormatter.string(from: dateRecorded!)
+        "Recorded:  " + EnvironmentKey.defaultDateFormatter.string(from: dateRecorded)
     }
     
     // for line items on pages on /video-albums
@@ -73,19 +69,21 @@ struct Video: Component, Decodable {
             }.class("vid-gal-thumbnail")
         }.class("vid-gal-line-item")
     }
+    
+    var previewBox: Component {
+        Article {
+            H1 { Link(name, url: link) }
+            Paragraph(caption)
+        }
+    }
 }
 
 extension Video: Comparable {
     static func < (lhs: Video, rhs: Video) -> Bool {
-        if lhs.dateRecorded != nil && rhs.dateRecorded != nil {
-            return lhs.dateRecorded! < rhs.dateRecorded!
-        }
-        return lhs.id < rhs.id
+        lhs.id < rhs.id
     }
     
     static func == (lhs: Video, rhs: Video) -> Bool {
         lhs.id == rhs.id
     }
-    
-    
 }

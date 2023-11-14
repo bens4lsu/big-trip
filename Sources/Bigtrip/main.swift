@@ -39,6 +39,6 @@ struct Bigtrip: Website {
 
 // This will generate your website using the built-in Foundation theme:
 try Bigtrip().publish(withTheme: .foundation, additionalSteps: [
-    
+    .writePostPages(),
                                                                
 ])

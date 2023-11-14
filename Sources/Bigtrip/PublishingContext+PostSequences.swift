@@ -53,9 +53,10 @@ extension PublishingContext where Site == Bigtrip {
         return blogPosts
     }
     
-    var everything: [Component] {
-        let mystuff: [Component] = videos + posts
-        print(mystuff)
-        return mystuff
+    var everything: [DatedComponent] {
+        let typeErasedBlogPosts = self.posts.map { $0.asComparable() }
+        let typeErasedVideos = self.posts.map { $0.asComparable() }
+        let mystuff = typeErasedBlogPosts + typeErasedVideos
+        return mystuff.sorted(by: > )
     }
 }

@@ -13,7 +13,7 @@ extension PublishingStep where Site == Bigtrip {
     
     static func writePostPages() -> Self {
         .step(named: "Mirror Pages") { context in
-            
+            let _ = context.everything
         }
     }
 }
