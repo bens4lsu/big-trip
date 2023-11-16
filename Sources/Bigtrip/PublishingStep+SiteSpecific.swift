@@ -11,9 +11,15 @@ import Publish
 
 extension PublishingStep where Site == Bigtrip {
     
-    static func writePostPages() -> Self {
-        .step(named: "Mirror Pages") { context in
-            let _ = context.everything
+    static func writeVideoPages() -> Self {
+        .step(named: "Write Video Pages") { context in
+            for video in context.videos {
+                let pageComponent = PageTemplate(bodyContent: video)
+                var page = Page(path: "\(video.link)", content: Content())
+                let html = HTML(.component(pageComponent))
+                page.content.body.html = html.render()
+                context.addPage(page)
+            }
         }
     }
 }

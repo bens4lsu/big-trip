@@ -10,7 +10,7 @@ import Foundation
 import Publish
 
 extension Theme where Site == Bigtrip {
-    static var tsobTheme: Theme {
+    static var bigtripTheme: Theme {
         Theme(htmlFactory: BigtripHTMLFactory(), resourcePaths: ["Resources/style/style.css"])
     }
 }

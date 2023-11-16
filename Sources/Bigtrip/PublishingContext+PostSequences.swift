@@ -53,10 +53,21 @@ extension PublishingContext where Site == Bigtrip {
         return blogPosts
     }
     
-    var everything: [DatedComponent] {
+    private var combinedItems: [AnyComparableDatedComponent] {
         let typeErasedBlogPosts = self.posts.map { $0.asComparable() }
-        let typeErasedVideos = self.posts.map { $0.asComparable() }
-        let mystuff = typeErasedBlogPosts + typeErasedVideos
-        return mystuff.sorted(by: > )
+        let typeErasedVideos = self.videos.map { $0.asComparable() }
+        return typeErasedBlogPosts + typeErasedVideos
+    }
+    
+    var allPageItems: ArticleList {
+        let mystuff = combinedItems.sorted(by: < )
+        return ArticleList(items: mystuff)
+    }
+    
+    var homePageItems: Component {
+        var mystuff = combinedItems.sorted(by: > )
+        mystuff = Array(mystuff.prefix(EnvironmentKey.maxArticlesHomePage))
+        let articleList = ArticleList(items: mystuff)
+        return articleList.homePage
     }
 }

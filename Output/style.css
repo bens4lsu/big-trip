@@ -1,8 +1,4 @@
-/**
-*  Publish Foundation theme
-*  Copyright (c) John Sundell 2019
-*  MIT license, see LICENSE file for details
-*/
+
 
 * {
     margin: 0;
@@ -62,10 +58,20 @@ nav li a.selected {
 h1 {
     margin-bottom: 20px;
     font-size: 2em;
+    margin-top: 30px;
 }
 
 h2 {
     margin: 20px 0;
+}
+
+h3 {
+    color:lighter;
+    margin-bottom: 20px;
+}
+
+div.video-caption p {
+    margin-bottom: 40px;
 }
 
 p {
@@ -141,6 +147,10 @@ a {
 
 footer {
     color: #8a8a8a;
+}
+
+.italic {
+    font-style: italic;
 }
 
 @media (prefers-color-scheme: dark) {

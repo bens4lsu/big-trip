@@ -53,26 +53,20 @@ struct Video: DatedComponent, Decodable {
         "Recorded:  " + EnvironmentKey.defaultDateFormatter.string(from: dateRecorded)
     }
     
-    // for line items on pages on /video-albums
     var body: Component {
-        Div {
+        ComponentGroup {
+            H1(name)
+            H3(formattedDate)
+            Div { Markdown(caption) }.class("video-caption")
             Div {
-                H2 { Link(name, url: link) }
-                Span(Markdown(caption))
-                H3 { Text("\(dateRecordedString)") }
-                H3 { Text("\(formattedDuration)") }
-            }.class("vid-gal-stuff")
-            Div{
-                Link(url: link) {
-                    Image("/img/video-thumbnails/\(tn)")
-                }
-            }.class("vid-gal-thumbnail")
-        }.class("vid-gal-line-item")
+                Markdown(embed)
+            }.class("embed-featured")
+        }
     }
     
     var previewBox: Component {
         Article {
-            H1 { Link(name, url: link) }
+            H1 { Link("Video:  \(name)", url: link) }
             Paragraph(caption)
         }
     }

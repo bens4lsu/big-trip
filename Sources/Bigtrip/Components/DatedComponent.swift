@@ -22,13 +22,13 @@ extension DatedComponent where Self: Comparable {
 
 struct AnyComparableDatedComponent: DatedComponent, Comparable {
 
-    var date: Date { value.date }
-    var body: Component { value.body }
-    var previewBox: Component { value.previewBox }
-    private let value: DatedComponent
+    var date: Date { _value.date }
+    var body: Component { _value.body }
+    var previewBox: Component { _value.previewBox }
+    private let _value: DatedComponent
     
     init(_ value: DatedComponent) {
-        self.value = value
+        self._value = value
     }
     
     static func == (lhs: AnyComparableDatedComponent, rhs: AnyComparableDatedComponent) -> Bool {
@@ -39,3 +39,4 @@ struct AnyComparableDatedComponent: DatedComponent, Comparable {
         lhs.date < rhs.date
     }
 }
+

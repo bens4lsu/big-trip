@@ -23,4 +23,8 @@ extension EnvironmentKey where Value == DateFormatter {
     }()
 }
 
-
+extension EnvironmentKey where Value == Int {
+    static let maxArticlesHomePage = 6
+    
+    static let styleAndScriptVersion = Int.random(in: Int.min...Int.max)
+}
