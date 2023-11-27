@@ -28,7 +28,7 @@ struct BlogPost: DatedComponent {
     
     var body: Component {
         return Article {
-            H1(title)
+            H1(title) 
             H3(dateString)
             Div(content.body)
         }
