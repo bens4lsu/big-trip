@@ -54,7 +54,7 @@ struct Video: DatedComponent, Decodable {
     }
     
     var body: Component {
-        ComponentGroup {
+        Article {
             H1(name)
             H3(formattedDate)
             Div { Markdown(caption) }.class("video-caption")
@@ -67,7 +67,10 @@ struct Video: DatedComponent, Decodable {
     var previewBox: Component {
         Article {
             H1 { Link("Video:  \(name)", url: link) }
-            Paragraph(caption)
+            Div {
+                Div { Text(caption) }.class("pvbox-description")
+                Div{ Image("/img/video-thumbnails/\(tn)") }.class("pvbox-image")
+            }.class("pvbox-flex")
         }
     }
 }

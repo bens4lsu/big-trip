@@ -48,7 +48,7 @@ extension PublishingContext where Site == Bigtrip {
         }
         let blogPosts = blog2Section.items.map { item in
             let slug = URL(string: item.path.string)?.lastPathComponent ?? item.path.string
-            return BlogPost(title: item.title, slug: slug, date: item.date, content: item.content.body, description: item.metadata.description, tags: item.tags)
+            return BlogPost(title: item.title, slug: slug, date: item.date, content: item.content.body, description: item.metadata.description, tags: item.tags, ogImg: item.metadata.ogImg)
         }.sorted(by: { $0.date < $1.date })
         return blogPosts
     }

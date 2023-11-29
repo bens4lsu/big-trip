@@ -40,7 +40,7 @@ header .wrapper {
     text-align: center;
 }
 
-header a {
+header a  {
     text-decoration: none;
 }
 
@@ -61,15 +61,18 @@ nav li {
     line-height: 1.5em;
 }
 
-nav li a.selected {
+nav li a {
     text-decoration: underline;
 }
 
-article {
-    margin-left: 10%;
-    margin-right: 10%;
+body > article {
+    margin-left: auto;
+    margin-right: auto;
     line-height: 1.333;
     margin-bottom: 30px;
+    max-width: 1040px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 h1 {
@@ -97,6 +100,7 @@ a.lightview.centered {
 a.lightview.centered img {
     margin: 10px auto 4px auto;
     display: block;
+    max-width: 100%;
 }
 
 a.lightview.centered .caption {
@@ -106,6 +110,10 @@ a.lightview.centered .caption {
     display: block;
     text-align: center;
     color: #777;
+}
+
+iframe {
+    max-width: 100%;
 }
 
 div.video-caption p {
@@ -119,6 +127,28 @@ p {
 a {
     color: inherit;
 }
+
+.pvbox-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.pvbox-description {
+    flex: 5 0 auto;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+.pvbox-image {
+    flex: 2 2 auto;
+}
+
+.pvbox-image img {
+    max-width: 100%;
+}
+
+
 
 
 footer {

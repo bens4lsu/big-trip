@@ -16,6 +16,7 @@ struct BlogPost: DatedComponent {
     let content: Content.Body
     let description: String
     let tags: [Tag]
+    let ogImg: URLRepresentable?
     
     
     var dateString: String {
@@ -34,10 +35,20 @@ struct BlogPost: DatedComponent {
         }
     }
     
+    var previewBoxImg: Component {
+        guard let ogImg else {
+            return EmptyComponent()
+        }
+        return Div { Image("/img/bigtrip/\(ogImg)") }.class("pvbox-image")
+    }
+    
     var previewBox: Component {
         Article {
             H1 { Link(title, url: "/posts/\(slug)") }
-            Paragraph(description)
+            Div {
+                Div { Text(description) }.class("pvbox-description")
+                previewBoxImg
+            }.class("pvbox-flex")
         }
     }
 }

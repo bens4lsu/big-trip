@@ -50,7 +50,7 @@ struct BigtripHTMLFactory: HTMLFactory {
     
     func makeItemHTML(for item: Publish.Item<Bigtrip>, context: Publish.PublishingContext<Bigtrip>) throws -> Plot.HTML {
         let htmlHeadInfo = HeaderInfo(location: context.index, title: item.title)
-        let blogPost = BlogPost(title: item.title, slug: item.path.string, date: item.date, content: item.body, description: item.description, tags: item.tags)
+        let blogPost = BlogPost(title: item.title, slug: item.path.string, date: item.date, content: item.body, description: item.description, tags: item.tags, ogImg: item.metadata.ogImg)
         let pageMain = PageTemplate(bodyContent: blogPost)
         return HTML(htmlHeadInfo.node, pageMain.convertToNode())
         
