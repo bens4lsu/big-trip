@@ -17,8 +17,10 @@ extension BigtripHTMLFactory {
         let title: String
         let rssFeedPath: Path? = .defaultForRSSFeed
         let rssFeedTitle: String? = nil
-        let stylesheetPaths: [Path] = ["/style/style.css?v=\(EnvironmentKey.styleAndScriptVersion)",]
-        let scriptPaths: [Path] = []
+        let stylesheetPaths: [Path] = ["/style/lightview.css",
+                                       "/style/style.css?v=\(EnvironmentKey.styleAndScriptVersion)",]
+        let scriptPaths: [Path] = ["https://code.jquery.com/jquery-3.7.0.min.js",
+                                   "/scripts/lightview.js",]
         
         
 //        let gaScript = """
