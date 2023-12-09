@@ -13,7 +13,9 @@ struct RealtimeMap: Component {
     
     var body: Component {
         Div  {
-            Paragraph("Placeholder for real time map")
-        }.class("wrapper").style("height: 300px; border: 1px solid black; padding: 20px; border-radius: 20px; margin-top: 30px;")
+            H2("Tracking")
+            Paragraph("Placeholder for real-time tracking.  Some lines are on the map from previous voyages of a previous Velvet Elvis.")
+            IFrame(url: EnvironmentKey.predictWindSrc, addBorder: true, allowFullScreen: true, enabledFeatureNames: []).class("iframe-tracking")
+        }.class("wrapper")
     }
 }

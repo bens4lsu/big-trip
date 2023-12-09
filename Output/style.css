@@ -116,6 +116,11 @@ iframe {
     max-width: 100%;
 }
 
+iframe.iframe-tracking {
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
 div.video-caption p {
     margin-bottom: 40px;
 }
