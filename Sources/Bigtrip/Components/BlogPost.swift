@@ -39,7 +39,7 @@ struct BlogPost: DatedComponent {
         guard let ogImg else {
             return EmptyComponent()
         }
-        return Div { Image("/img/bigtrip/\(ogImg)") }.class("pvbox-image")
+        return Div { Image(ogImg) }.class("pvbox-image")
     }
     
     var previewBox: Component {
