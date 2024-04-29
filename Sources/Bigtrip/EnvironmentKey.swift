@@ -12,12 +12,14 @@ import Publish
 extension EnvironmentKey where Value == DateFormatter {
     static let defaultDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.timeZone = .init(identifier: "UTC")
         formatter.dateFormat = "MMMM dd, yyyy"
         return formatter
     }()
     
     static let yyyyMMddDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.timeZone = .init(identifier: "UTC")
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
