@@ -23,8 +23,8 @@ struct ArticleList: Component {
     
     var homePage: Component {
         ComponentGroup {
-            Div("The Schultz family is picking up a new boat in January, 2024 and bringing it from Izola, Slovenia in the Adriatic Sea back to her new home in New Orleans.  Follow along with the adventure!").class("wrapper")
-            RealtimeMap()
+            Div("The Schultz family brought Velvet Elvis from Izola, Slovenia in the Adriatic Sea back to her new home in New Orleans.  This is the chronicle of that adventure").class("wrapper")
+            //RealtimeMap()
             self
         }
     }
